@@ -49,7 +49,9 @@ public class AccountObject {
     }
 
     public AccountObject setBalance(double balance1) {
-
+        if(balance1 < 0){
+            WithdrawalCheck(balance1);
+        }
         this.balance = balance1;
         return this;
 
@@ -69,15 +71,19 @@ public class AccountObject {
         return balance;
     }
 
-    public void WithdrawalCheck(){
-        if(balance < 0.00){
-            balance = 0.00;
-        }
+    public void WithdrawalCheck(double balance1){
+        balance = balance1;
+        System.out.println("You can't withdraw money you don't have.");
     }
 
     public void Fee(){
         if(balance <=200.00){
+            if(balance-50 < 0){
+                WithdrawalCheck(balance);
+            }
+            else {
             balance -=50.00;
+            }
         }
     }
 
@@ -93,9 +99,14 @@ public class AccountObject {
         if(object1 instanceof AccountObject){
             AccountObject account = (AccountObject) object1;
             if(name.equals(account.name)){
+                if(balance-balance1 < 0){
+                    Withdrawal(balance);
+                }
+                else{
                 balance -=balance1;
                 account.balance +=balance1;
                 System.out.println("Thank You for transferring money.");
+                }
             }
             else
             {

@@ -12,22 +12,17 @@ public class AccountClient {
         account2.setBalance(600.00);
         account2.CheckBalance();
 
-        account1.WithdrawalCheck();
-        account2.WithdrawalCheck();
         account1.Fee();
         account2.Fee();
 
         account1.setBalance(-100.00);
         account1.Fee();
-        account1.WithdrawalCheck();
         account1.CheckBalance();
 
         account2.transfer(account1,500.00);
         account2.Fee();
-        account2.WithdrawalCheck();
         account2.CheckBalance();
         account1.Fee();
-        account1.WithdrawalCheck();
         account1.CheckBalance();
 
         System.out.println(account1.toString());

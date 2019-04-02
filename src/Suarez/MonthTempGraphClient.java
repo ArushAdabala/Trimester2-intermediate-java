@@ -1,5 +1,9 @@
 package Suarez;
-
+/*
+Arush
+4/1/2019
+Monthly temp bar graph
+ */
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javax.swing.*;
@@ -16,18 +20,27 @@ public class MonthTempGraphClient extends Application {
     public void start(Stage stage) {
 
         int [] MonthlyTemp = new int[12];
+        String [] Month = {"January","February","March","April","May","June","July","August","September","October","November","December"};
+        String MaxMonth = "";
+        String MinMonth = "";
         int sum = 0;
         int max = -1000;
         int min = 1000;
         for(int i = 0; i<12 ; i++){
-            System.out.println("Please type in this month's average temperature");
+            System.out.println("Please type in the average temperature for month "+Month[i]);
+            while(!input.hasNextInt() && MonthlyTemp[i]<=120 && MonthlyTemp[i]>=0) {
+                System.out.println("The input was invalid. Please type in the average temperature for month "+Month[i]);
+                input.next();
+            }
             MonthlyTemp[i] = input.nextInt();
             sum += MonthlyTemp[i];
             if(MonthlyTemp[i]>max){
                 max = MonthlyTemp[i];
+                MaxMonth = Month[i];
             }
             if(MonthlyTemp[i]<min){
                 min = MonthlyTemp[i];
+                MinMonth = Month[i];
             }
 
         }
@@ -63,24 +76,24 @@ public class MonthTempGraphClient extends Application {
         String temp11 = tempj.toString();
         Integer tempk = new Integer(MonthlyTemp[11]);
         String temp12 = tempk.toString();
-        GraphicsContext gc = JIGraphicsUtility.setUpGraphics(stage,"Drawing A Sprite",750,700);
-        MonthTempGraphObj month1 = new MonthTempGraphObj(gc,Color.BLUE,6,MonthlyTemp[0],stage,temp1,"Jan");
-        MonthTempGraphObj month2 = new MonthTempGraphObj(gc,Color.BLUE,64,MonthlyTemp[1],stage,temp2,"Feb");
-        MonthTempGraphObj month3 = new MonthTempGraphObj(gc,Color.BLUE,122,MonthlyTemp[2],stage,temp3,"Mar");
-        MonthTempGraphObj month4 = new MonthTempGraphObj(gc,Color.YELLOW,180,MonthlyTemp[3],stage,temp4,"Apr");
-        MonthTempGraphObj month5 = new MonthTempGraphObj(gc,Color.YELLOW,238,MonthlyTemp[4],stage,temp5,"May");
-        MonthTempGraphObj month6 = new MonthTempGraphObj(gc,Color.RED,296,MonthlyTemp[5],stage,temp6,"Jun");
-        MonthTempGraphObj month7 = new MonthTempGraphObj(gc,Color.RED,354,MonthlyTemp[6],stage,temp7,"Jul");
-        MonthTempGraphObj month8 = new MonthTempGraphObj(gc,Color.RED,412,MonthlyTemp[7],stage,temp8,"Aug");
-        MonthTempGraphObj month9 = new MonthTempGraphObj(gc,Color.YELLOW,470,MonthlyTemp[8],stage,temp9,"Sep");
-        MonthTempGraphObj month10 = new MonthTempGraphObj(gc,Color.YELLOW,528,MonthlyTemp[9],stage,temp10,"Oct");
-        MonthTempGraphObj month11 = new MonthTempGraphObj(gc,Color.BLUE,586,MonthlyTemp[10],stage,temp11,"Nov");
-        MonthTempGraphObj month12 = new MonthTempGraphObj(gc,Color.BLUE,644,MonthlyTemp[11],stage,temp12,"Dec");
+        GraphicsContext gc = JIGraphicsUtility.setUpGraphics(stage,"Drawing A Sprite",1000,700);
+        MonthTempGraphObj month1 = new MonthTempGraphObj(gc,Color.BLUE,126,MonthlyTemp[0],stage,temp1,"Jan");
+        MonthTempGraphObj month2 = new MonthTempGraphObj(gc,Color.BLUE,184,MonthlyTemp[1],stage,temp2,"Feb");
+        MonthTempGraphObj month3 = new MonthTempGraphObj(gc,Color.BLUE,242,MonthlyTemp[2],stage,temp3,"Mar");
+        MonthTempGraphObj month4 = new MonthTempGraphObj(gc,Color.YELLOW,300,MonthlyTemp[3],stage,temp4,"Apr");
+        MonthTempGraphObj month5 = new MonthTempGraphObj(gc,Color.YELLOW,358,MonthlyTemp[4],stage,temp5,"May");
+        MonthTempGraphObj month6 = new MonthTempGraphObj(gc,Color.RED,416,MonthlyTemp[5],stage,temp6,"Jun");
+        MonthTempGraphObj month7 = new MonthTempGraphObj(gc,Color.RED,474,MonthlyTemp[6],stage,temp7,"Jul");
+        MonthTempGraphObj month8 = new MonthTempGraphObj(gc,Color.RED,532,MonthlyTemp[7],stage,temp8,"Aug");
+        MonthTempGraphObj month9 = new MonthTempGraphObj(gc,Color.YELLOW,590,MonthlyTemp[8],stage,temp9,"Sep");
+        MonthTempGraphObj month10 = new MonthTempGraphObj(gc,Color.YELLOW,648,MonthlyTemp[9],stage,temp10,"Oct");
+        MonthTempGraphObj month11 = new MonthTempGraphObj(gc,Color.BLUE,706,MonthlyTemp[10],stage,temp11,"Nov");
+        MonthTempGraphObj month12 = new MonthTempGraphObj(gc,Color.BLUE,764,MonthlyTemp[11],stage,temp12,"Dec");
 
         gc.setStroke(Color.BLACK);
-        gc.strokeText("The maximum monthly temperature was "+Maximum,0,600);
-        gc.strokeText("The minimum monthly temperature was "+Minimum,250,600);
-        gc.strokeText("The average monthly temperature was "+Minimum,500,600);
+        gc.strokeText("The maximum monthly temperature was "+Maximum+" in the month of "+MaxMonth,0,600);
+        gc.strokeText("The minimum monthly temperature was "+Minimum+" in the month of "+MinMonth,375,600);
+        gc.strokeText("The average monthly temperature was "+Average,750,600);
 
     }
 

@@ -12,9 +12,9 @@ public class HorseBarnClient {
         int longest = 0;
 
         //Creating Horse objects
-        Horse [] barnA = {new Horse("Xander"), new Horse("Xander"), new Horse("Xander"), new Horse("Xander"), null,new Horse("Xander")};
-        Horse [] barnB = {new Horse("Xander"), new Horse("Xander"), new Horse("Xander"), new Horse("Xander"), new Horse("Xander"),new Horse("Xander")};
-        Horse [] barnC = {new Horse("Xander"), new Horse("Xander"), new Horse("Xander"), null, new Horse("Xander"), new Horse("Xander")};
+        Horse [] barnA = {new Horse("Xander"), new Horse("Aarian"), new Horse("Arush"), new Horse("Chadley"), null,new Horse("Bradley")};
+        Horse [] barnB = {new Horse("Joey"), new Horse("Joseph"), new Horse("Johnathan"), null, new Horse("Andrew"),null};
+        Horse [] barnC = {new Horse("Matteo"), new Horse("Fermier"), new Horse("Cole"), null, new Horse("Dhanani"), new Horse("Adabala")};
 
         //Creating HorseBarn objects using the Horse objects
         HorseBarn barn1 = new HorseBarn(barnA);
@@ -73,3 +73,4 @@ public class HorseBarnClient {
         }
     }
 }
+

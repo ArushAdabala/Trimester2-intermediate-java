@@ -47,6 +47,16 @@ public class HorseBarn {
         return temp;
     }
 
+    public int getNumberOfHorses() {
+        int counter = 0;
+        for(int i = 0; i < spaces.length; i++){
+            if(spaces[i] != null) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
     //This method accesses the names of the horses in the barn.
     public String[] getHorsesNames() {
         String [] temp = new String [spaces.length];

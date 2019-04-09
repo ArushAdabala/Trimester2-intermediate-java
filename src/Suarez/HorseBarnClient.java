@@ -7,6 +7,7 @@ This class also combines multiple HorseBarn Objects, and it finds the longest Ho
 */
 public class HorseBarnClient {
     public static void main(String[] args) {
+
         //Declaring the longest variable in order to find the biggest HorseBarn object
         int longest = 0;
 
@@ -19,6 +20,9 @@ public class HorseBarnClient {
         HorseBarn barn1 = new HorseBarn(barnA);
         HorseBarn barn2 = new HorseBarn(barnB);
         HorseBarn barn3 = new HorseBarn(barnC);
+
+        //Question c) Creating the stable or the array of barns
+        HorseBarn[] stable = {barn1, barn2, barn3};
 
         //Testing the setBarnLength method
         barn1.setBarnLength(8);
@@ -33,36 +37,39 @@ public class HorseBarnClient {
         //Testing the findHorseSpace method
         System.out.println(barn1.findHorseSpace("Amon"));
 
-        //Question c) Find the biggest HorseBarn object.
-        if(barn1.getHorses().length>barn2.getHorses().length){
-            if(barn3.getHorses().length>barn1.getHorses().length){
-                System.out.println("barn 3 is the longest");
+        //Question c) Find the Barn with the most number of horses.
+        if(stable[0].getNumberOfHorses() > stable[2].getNumberOfHorses()){
+            if(stable[0].getNumberOfHorses() > stable[2].getNumberOfHorses()){
+                System.out.println("The first barn has the most horses");
+            }
+            else if(stable[0].getNumberOfHorses() < stable[2].getNumberOfHorses()){
+                System.out.println("The third barn has the most horses");
             }
             else{
-                System.out.println("barn 1 is the longest");
+                System.out.println("The first and third barn have the same number of horses, and they both have the most number of horses.");
+            }
+        }
+        else if(stable[0].getNumberOfHorses() > stable[2].getNumberOfHorses()){
+            if(stable[1].getNumberOfHorses() > stable[2].getNumberOfHorses()){
+                System.out.println("The second barn has the most horses");
+            }
+            else if(stable[1].getNumberOfHorses() < stable[2].getNumberOfHorses()){
+                System.out.println("The third barn has the most horses");
+            }
+            else{
+                System.out.println("The second and third barn have the same number of horses, and they both have the most number of horses.");
             }
         }
         else{
-            if(barn3.getHorses().length>barn2.getHorses().length){
-                System.out.println("barn 3 is the longest");
+            if(stable[1].getNumberOfHorses() > stable[2].getNumberOfHorses()){
+                System.out.println("The first and third barn have the same number of horses, and they both have the most number of horses.");
+            }
+            else if(stable[1].getNumberOfHorses() < stable[2].getNumberOfHorses()){
+                System.out.println("The third barn has the most horses");
             }
             else{
-                System.out.println("barn 2 is the longest");
+                System.out.println("The first, second, and third barn have the same number of horses.");
             }
         }
-
-        //Question c) Combines the three object arrays.
-        Horse [] barnD = new Horse[barn1.getHorses().length+barn2.getHorses().length+barn3.getHorses().length];
-        for(int i = 0; i < barn1.getHorses().length; i++){
-            barnD[i] = barn1.getHorses()[i];
-        }
-        for(int j = 0; j < barn2.getHorses().length; j++){
-            barnD[j+barn1.getHorses().length] = barn2.getHorses()[j];
-        }
-        for(int k = 0; k < barn3.getHorses().length; k++){
-            barnD[k+(barn1.getHorses().length+barn2.getHorses().length)] = barn3.getHorses()[k];
-        }
-        HorseBarn barnCombination = new HorseBarn(barnD);
-        System.out.println(barnCombination.toString());
     }
 }
